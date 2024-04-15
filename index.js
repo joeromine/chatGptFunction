@@ -1,16 +1,17 @@
 const OpenAI = require("openai");
 require('dotenv').config()
 
+const openai = new OpenAI({
+  apiKey: process.env.GPT
+});
 
+const statment = "Happy birthday jack and jill" //Update statment to test
+run(statment)
 
-
-async function run(){
-
-
-
+async function run(statment){
 
     const gptResponse  = await openai.chat.completions.create({
-        model: 'gpt-4',
+        model: 'gpt-3.5-turbo',
         messages: [{ 
           role: 'user', 
           content: "create new Score object with the score set to the appropriateness of the statement with a value between 1 and 10. 1 being very appropriate and 10 being not appropriate at all" }],
@@ -21,7 +22,8 @@ async function run(){
                 type: "object",
                 properties: {
                     statment: {
-                        type: "string"
+                        type: "string",
+                        description: statment
                     },
                     score: {
                         type: "integer"
@@ -32,14 +34,9 @@ async function run(){
             }
           ],
           function_call: { name: "createScoreObject" }
-      });
-    
-      const json = JSON.parse(gptResponse.choices[0].message.content);
-    
+      }); 
+      
+      const functionCall = gptResponse.choices[0].message.function_call;
+      const json = JSON.parse(functionCall.arguments);
+      console.log(JSON.stringify(json));
 }
-
-const openai = new OpenAI({
-    apiKey: process.env.GPT
-  });
-
-const statment = "Happy birthday jack and jill" //Update statment to test
