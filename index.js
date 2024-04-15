@@ -5,8 +5,9 @@ const openai = new OpenAI({
   apiKey: process.env.GPT
 });
 
-const statment = "Happy birthday jack and jill" //Update statment to test
-run(statment)
+
+run("Happy birthday jack and jill")// Low Score
+run("you want some cocaine?")// High Score
 
 async function run(statment){
 
@@ -14,7 +15,7 @@ async function run(statment){
         model: 'gpt-3.5-turbo',
         messages: [{ 
           role: 'user', 
-          content: "create new Score object with the score set to the appropriateness of the statement with a value between 1 and 10. 1 being very appropriate and 10 being not appropriate at all" }],
+          content: `create new Score object with the score set to the appropriateness of the statement "${statment}"  with a value between 1 and 10. 1 being very appropriate and 10 being not appropriate at all.` }],
           functions:[
             {
               name: "createScoreObject",
@@ -23,7 +24,7 @@ async function run(statment){
                 properties: {
                     statment: {
                         type: "string",
-                        description: statment
+                        description: "statement to be evaluated"
                     },
                     score: {
                         type: "integer"
@@ -32,7 +33,7 @@ async function run(statment){
             }
             }
           ],
-          function_call: { name: "createScoreObject" }
+          function_call: { name: "createScoreObject"}
       }); 
       
       const functionCall = gptResponse.choices[0].message.function_call;
