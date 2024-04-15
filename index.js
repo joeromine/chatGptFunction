@@ -29,7 +29,6 @@ async function run(statment){
                         type: "integer"
                     },
                 },
-                required: ["name", "colour", "age"]
             }
             }
           ],
