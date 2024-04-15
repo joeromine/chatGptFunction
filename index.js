@@ -13,7 +13,7 @@ async function run(){
         model: 'gpt-4',
         messages: [{ 
           role: 'user', 
-          content: "create new Score object with the score bing the appropratness of the statemnt with a value between 1 and 10. 1 being very approprate and 10 being not approprate at all" }],
+          content: "create new Score object with the score set to the appropriateness of the statement with a value between 1 and 10. 1 being very appropriate and 10 being not appropriate at all" }],
           functions:[
             {
               name: "createScoreObject",
