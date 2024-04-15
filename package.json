@@ -1,0 +1,15 @@
+{
+  "name": "chatgptfunction",
+  "version": "1.0.0",
+  "description": "call to chatGPT to assess the appropriateness of statment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joe Romine",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "openai": "^4.33.1"
+  }
+}
