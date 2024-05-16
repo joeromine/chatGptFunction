@@ -6,7 +6,7 @@ npm install
 - Add chatGpt API Key to file
 
 ## Running the App
- - set statment varable to be a statment that needs to be evaluates
+ - set statement variable to be a statement that needs to be evaluated
  - run app
    - node index.js 
  - The output should be displayed in the console or an error
