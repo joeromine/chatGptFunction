@@ -7,7 +7,7 @@ const openai = new OpenAI({
 
 
 run("Happy birthday jack and jill")// Low Score
-run("you want some cocaine?")// High Score
+run("you want some smurf frog powder?")// High Score
 
 async function run(statment){
 
